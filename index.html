@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- Application Copyright (c) 2012 Hard Data Factory. All rights reserved. -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta http-equiv="X-UA-Compatible" content="IE=8">
+  <meta http-equiv="refresh" content="36000;">
+  <script type="text/javascript" src="../sharedhtml/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../sharedhtml/iscroll/iscroll.js"></script>
+<script type="text/javascript" src="../sharedhtml/iscroll/iscrollhead.js"></script>
+<link type="text/css" rel="stylesheet" media="screen" href="./device.css">
+<script type="text/javascript" src="./device.js"></script>
+
+  <link type="text/css" rel="stylesheet" media="screen" href="../sharedhtml/css/theme.css">
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png"/> 
+  <link rel="apple-touch-startup-image" href="./images/startup-HDF.png" />
+  <script type="text/javascript" src="../sharedhtml/js/mobileapp.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+   initialize_app( );
+ });
+  </script>
+</head>
+<body>
+  <div id="header">
+    <div class="toolbar" onclick="hidedetail( );">
+     
+     <a id="backbutton">
+      <img border=0 height="29px" width="47px" src='../sharedhtml/images/back_button.png'>
+    </a>
+
+    <h1 id="pagetitle">Tech: No City Selected</h1>
+    
+    <a id="changecity" onclick="showoptions();">
+      <img height="29px" width="57px" src='../sharedhtml/images/optionsbutton.png'>
+    </a>
+    
+  </div>
+
+  <table id='monthcal' style='display: none;'>
+  </table>
+</div>
+
+<div id="wrapper">
+<div id="wscroller">
+  <div id="scroller">
+    <div id="ajax-loader" style="background-color: #AAA; padding-top: 100px;">
+      <center>
+       <img border=0 src='../sharedhtml/images/ajax_loader.gif' width=30 height=30>
+       <br><br>
+       Loading...
+     </center>
+   </div>
+   <table id="mytoplist" class="elist">
+   </table>
+
+   <table id="mytodaylist" class="elist">
+   </table>
+   <div id="options" style="">
+     <center>
+       <div id="optiontable">
+       </div>
+     </center>
+   </div>
+   <div id="aboutthisapp">
+    <table style="background-color: #FFFFFF; width: 100%; height: 100%; color:#000000;">
+      <tr>
+        <td id="aboutsponsor">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><b>About the Developer</b></p>
+
+          <div style="float: right;">
+            <a href="#" onclick="device_open_url('http://harddatafactory.com/Johnny_Monsarrat_contact.html');return false;"  class="external-link"target=_blank>
+              <img border="0" src="../sharedhtml/images/logos/newlogo-36pt-color.png" width=150>
+            </a>
+          </div>
+          <p>Hard Data Factory draws information from public websites. Using patented technology, we can find events, sales leads, management bios, real estate listings, and more.</p>
+          <br>
+
+          <p>We welcome your feedback! For support or information, 
+            <a href="#" class="email-link" to="johnny@harddatafactory.com" subject="Email from the mobile app" body="" >email us</a>, call
+	    <a href="#" class="phone-link">617-510-4477</a>, or see our <a href="#" onclick="device_open_url('http://harddatafactory.com/Johnny_Monsarrat_contact.html');return false;"  class="external-link"  target=_blank>website</a>.
+          </p>
+          <br />
+
+          <div style="float: right;">
+            <a href="#" onclick="device_open_url('http://eventsINSIDER.com');return false;" class="external-link" target=_blank>
+              <img border="0" src="../sharedhtml/images/logos/eventsinsider-logo-100x100.png" width=100>
+            </a>
+          </div>
+          <p>Are you in Boston? See 
+            <a href="#" onclick="device_open_url('http://eventsINSIDER.com');return false;">Events INSIDER</a>, New England's most popular events blog.
+          </p>
+          <br>
+
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+  <div id="eventdetail" style="background-color: #FFFFFF; width: 100%; height: 100%; float:left">
+    <input type="hidden" id="event_id" name="event_id" />
+    <table style="color: #000000; padding-left: 10px; background-color: #FFFFFF; width: 100%; height: 100%;">
+      <tr>
+        <td id="detail-Title" colspan=2 style="padding-top: 10px; font-weight: bold;">
+          TITLE
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2 style="padding-top: 10px;">
+          <div style="float:right;">
+            <img border="0" id="detail-Image" src="">
+          </div>
+          <div id="detail-Desc">DESC</div>
+        </td>
+      </tr>
+      <tr>
+        <td id="detail-Date" colspan=2 style="padding-top: 10px; font-style: italic;">
+          DATE
+        </td>
+      </tr>
+      <tr>
+        <td id="detail-Address" colspan=2 style="padding-bottom: 10px; font-style: italic;">
+          ADDRESS
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span style="float: left;">
+            <a id="detail-URL" class="external-link"target=_blank style="text-overflow: ellipsis; white-space: nowrap;" href="">Event website</a>
+          </span> 
+          <span style="float: right;">
+            <a id="detail-Source" class="external-link" target=_blank style="text-overflow: ellipsis; white-space: nowrap;" href="">Source of listing</a>
+          </span> 
+          <br>
+        </br> 
+        <span style="float: left;">
+          <a id="email-link" class="email-link" style="text-overflow: ellipsis; white-space: nowrap;" href="#">
+            Email event
+          </a>
+        </span> 
+        <span style="float: right;">
+          <a class="calendar-link" style="text-overflow: ellipsis; white-space: nowrap;" href="#" onclick="javascript:return false;">
+            Add to calendar
+          </a>
+        </span> 
+      </td>
+    </tr> 
+    <tr>
+      <td valign=top style="padding-right: 10px; padding-top: 10px; border-top: thin solid black;"><img border="0" border=0 onclick="showabout();" src="../sharedhtml/images/logos/your_logo_here.png" width=100> 
+        <span style="float:right;" onclick="showabout();">
+          <u>About This App</u>
+        </span>
+      </td> 
+    </tr> 
+  </table>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+<div id="footer">
+ <div class="toolbar">
+   <a id="mbutton" class="newbutton" style="left: 6px; width: 35px;" onclick="togglelist();">
+    Month
+  </a>
+  <a class="newbutton" style="left: 60px; right: auto;" onclick="showtoday();">Today</a>
+  <a id="sponsorname" class="newbutton" style="left: auto; right: 6px;" onclick="showabout();"></a>
+</div>
+</div>
+</body>
+</html>
