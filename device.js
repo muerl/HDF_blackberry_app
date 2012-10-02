@@ -49,8 +49,9 @@
 
 
             try{
+
             	//$("#pagetitle").width($(window).width());
-                blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, handleBack);
+            	blackberry.system.event.onHardwareKey(blackberry.system.event.KEY_BACK, handleBack);
                 $(document).ready(function(){
                     $(document).bind('keyup',function(e){
                       if (e &&(e.which === 84 || e.which === 116)) {
@@ -72,59 +73,68 @@
         				return false;
                     }
                     if(!touch || v5){
-                 /*   	var about = $('#sponsorname');
-	                    var footer = $('#footer');
-	                    if($(window).width() < 400){
-	                        // we need even more special logic for curves.  320x240 is horrable
-	                        var head = $('#header > .toolbar');
-	                        head.height(86);
-	                        head.append(about.clone().css({'position':'absolute',"top":"43px"}).unbind('click').click(trickAbout));
-	                    } else{
-	                       // about.detach();
-	                        $('h1').after((about.clone().unbind('click').click(trickAbout)));
-	                    }
-	                    var oldSetHeight =setHeight;
-	                    setHeight = function(){
-	                    	oldSetHeight();
-	                    	$('#wscroller').height($('#scroller').height())
-	                    };
-	                    showtoday =  function(){
-	                    	$("body").scrollTop(0);
-	                    };
-	                    setHeight();
+	                 /*   	var about = $('#sponsorname');
+		                    var footer = $('#footer');
+		                    if($(window).width() < 400){
+		                        // we need even more special logic for curves.  320x240 is horrable
+		                        var head = $('#header > .toolbar');
+		                        head.height(86);
+		                        head.append(about.clone().css({'position':'absolute',"top":"43px"}).unbind('click').click(trickAbout));
+		                    } else{
+		                       // about.detach();
+		                        $('h1').after((about.clone().unbind('click').click(trickAbout)));
+		                    }
+		                    var oldSetHeight =setHeight;
+		                    setHeight = function(){
+		                    	oldSetHeight();
+		                    	$('#wscroller').height($('#scroller').height())
+		                    };
+		                    showtoday =  function(){
+		                    	$("body").scrollTop(0);
+		                    };
+		                    setHeight();
 
-	                   iScroll.prototype.scrollTo = function(x,y,t){
-	                    	if(typeof x === 'number')
-	                    		$("body").scrollTop(x);	
-	                    	else
-	                    		console.log(x);
-	                    };
-	                    iScroll.prototype.scrollToElement = function(el,t){
-	                    	$("body").scrollTop($(el).offset().top);	
-	                    };
-             */     
-             		 var oldSetHeight =setHeight;
-	                    setHeight = function(){
-	                    	oldSetHeight();
-	                    	$('.myScrollbarV').height($('#wscroller').height())
-	                    };
-             		var bindScrollBar = function(){$('.myScrollbarV').unbind().bind('click', function(e){
-					  var offsetY = e.offsetY;
-					  var fullHeight = $('#scroller').height();
-					  var scrollY = offsetY/$(this).height() * fullHeight;
-					  myScroll.scrollTo(0, -1*scrollY, 100);
-					})};
+		                   iScroll.prototype.scrollTo = function(x,y,t){
+		                    	if(typeof x === 'number')
+		                    		$("body").scrollTop(x);	
+		                    	else
+		                    		console.log(x);
+		                    };
+		                    iScroll.prototype.scrollToElement = function(el,t){
+		                    	$("body").scrollTop($(el).offset().top);	
+		                    };
+	               */  
+	             		 var oldSetHeight =setHeight;
+		                    setHeight = function(){
+		                    	oldSetHeight();
+		                    	
+		                    	$('.myScrollbarV').height($('#wscroller').height());
+		                    };
+	             		var bindScrollBar = function(){$('.myScrollbarV').unbind().bind('click', function(e){
+	             		
+						  var fullHeight = $('#scroller').height();
+					      var offsetY = e.offsetY;
+						 
+						  var scrollY = offsetY/$(this).height() * fullHeight;
+						  
+						  var chunk = myScroll.wrapperH;
 
-             		myScroll = new iScroll('wscroller', { scrollbarClass: 'myScrollbar'});
-             		var oldRef = myScroll.refresh;
-             		myScroll.refresh = function(){
-	                    	oldRef.bind(this)();
-	                    	bindScrollBar();
-	                };
+						  if(scrollY> -1*myScroll.y)
+						  	myScroll.scrollTo(0, myScroll.y - chunk, 0);
+						  else
+						  	myScroll.scrollTo(0, myScroll.y + chunk, 0);
+						})};
 
-             		setHeight();  
-             		bindScrollBar();
+	             		myScroll = new iScroll('wscroller', { scrollbarClass: 'myScrollbar'});
+	             		oldRef = myScroll.refresh;
+	             		myScroll.refresh = function(){
+		                    	oldRef.bind(this)();
+		                    	bindScrollBar();
+		                };
 
+	             		setHeight();  
+	             		bindScrollBar();
+ 
 	                } else {
 	                	initialize_iScroll();
 	                }
@@ -132,8 +142,7 @@
 	            	initialize_iScroll();
 	            }
             } catch (e)
-            {        }
-
+            {   console.log(JSON.stringify(e))     }
         },
         call : function(number){
         	  var args = new blackberry.invoke.PhoneArguments(number);
@@ -163,7 +172,6 @@
 // Device-specific code for the Android and iPhone
 function device_initialize( )
 {
-   
    WebWorks.setup();   // Allows vertical middle to scroll up & down
 }
 
@@ -230,6 +238,31 @@ function device_call_phone_number( number )
 
 function device_send_email(emailAddress, subject, body)
 {
+	subject = decodeURIComponent(subject);
+	body = decodeURIComponent(body);
     WebWorks.email(emailAddress, subject, body);
 }
 
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      // closest thing possible to the ECMAScript 5 internal IsCallable function
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+ 
+    var aArgs = Array.prototype.slice.call(arguments, 1), 
+        fToBind = this, 
+        fNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(this instanceof fNOP && oThis
+                                 ? this
+                                 : oThis,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+ 
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+ 
+    return fBound;
+  };
+}
