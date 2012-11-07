@@ -20,20 +20,22 @@
   <script type="text/javascript" src="../sharedhtml/js/mobileapp.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
-   setTimeout(initialize_app,0);
-   /*$(".detail").live("click", function(){
-       $(this).addClass('active');
-       
-   });*/
-   if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-    $("a.detail")
-    .bind("touchstart", function () {
-        $(this).addClass("fake_active");
-    })
-    .bind("touchend", function() {
-        $(this).removeClass("fake_active");
-    });
-    }
+    setTimeout(initialize_app,0);
+    if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+      $("a.detail")
+      .bind("touchstart", function () {
+          $(this).addClass("fake_active");
+      })
+      .bind("touchend", function() {
+          $(this).removeClass("fake_active");
+      });
+            $('button').addClass('button_mobile');
+    }else{
+        if(jQuery.browser.mobile){        
+            $('button').addClass('button-ios');
+            $('.aboutButton').css('height', '41%');
+        }        
+    }     
      
  });
   </script>
@@ -109,7 +111,7 @@
             </a>
           </div>
           <p>Are you in Boston? See 
-            <a href="http://eventsINSIDER.com">Events INSIDER</a>, New England's most popular events blog.
+            <a href="http://eventsINSIDER.com" class="external-link" >Events INSIDER</a>, New England's most popular events blog.
           </p>
           <br>
 
@@ -146,32 +148,15 @@
       </tr>
 
       <tr>
-        <td>
-          <span style="float: left;">
-            <a id="detail-URL" class="external-link"target=_blank style="text-overflow: ellipsis; white-space: nowrap;" href="">Event website</a>
-          </span> 
-          <span style="float: right;">
-            <a id="detail-Source" class="external-link" target=_blank style="text-overflow: ellipsis; white-space: nowrap;" href="">Source of listing</a>
-          </span> 
-          <br>
-        </br> 
-        <span style="float: left;">
-          <a id="email-link" class="email-link" style="text-overflow: ellipsis; white-space: nowrap;" href="#">
-            Email event
-          </a>
-        </span> 
-        <span style="float: right;">
-          <a class="calendar-link" style="text-overflow: ellipsis; white-space: nowrap;" href="#" onclick="javascript:return false;">
-            Add to calendar
-          </a>
-        </span> 
-      </td>
+          <td id="buttons_details">
+          <button id="detail-URL" type="button">Event website</button>
+          <button id="detail-Source" type="button">Where we found it</button>
+          <button id="email-link" class="email-link">Email event</button>
+          <button class='calendar-link'>Add to calendar</button>
     </tr> 
     <tr>
-      <td valign=top style="padding-right: 10px; padding-top: 10px; border-top: thin solid black;"><img border="0" border=0 onclick="showabout();" src="../sharedhtml/images/logos/your_logo_here.png" width=100> 
-        <span style="float:right;" onclick="showabout();">
-          <u>About This App</u>
-        </span>
+      <td valign=middle style="height: 72px; padding-right: 40px;"><img border="0" border=0 onclick="showabout();" src="../sharedhtml/images/logos/your_logo_here.png" width=100 /> 
+        <button class="aboutButton" style="float:right;" onclick="showabout();">About This App</button>        
       </td> 
     </tr> 
   </table>
@@ -197,5 +182,7 @@
   <a id="sponsorname" class="newbutton" style="left: auto; right: 6px;" onclick="showabout();"></a>
 </div>
 </div>
+<!-- AddThisEvent -->
+<script type="text/javascript" src="http://js.addthisevent.com/atemay.js"></script>
 </body>
 </html>

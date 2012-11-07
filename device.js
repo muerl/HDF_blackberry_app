@@ -173,6 +173,7 @@
 function device_initialize( )
 {
    WebWorks.setup();   // Allows vertical middle to scroll up & down
+   return "../sharedhtml/";
 }
 
 function device_get_json( url )
@@ -185,7 +186,7 @@ function device_get_json( url )
 		alert( jqxhr.status + ": " + exception );
 	    });
 }
-
+function device_prep_add_to_calendar () {}
 function device_add_event_to_calendar( data )
 {
 	/*
@@ -199,7 +200,7 @@ var data = {
     };
 
 
-	*/
+
     $.ajax( {
 	    url: "/app/Settings/add_event", 
 		data: data, 
@@ -208,7 +209,7 @@ var data = {
 		success: function(xdata) {
 	    }
 	});
-
+*/
 	var start_date = get_date_from_text(data.start_date);
 	var end_date = get_date_from_text(data.end_date);
 	if(data.start_hours){
