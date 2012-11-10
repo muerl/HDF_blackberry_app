@@ -108,7 +108,7 @@
 		                    setHeight = function(){
 		                    	oldSetHeight();
 		                    	
-		                    	$('.myScrollbarV').height($('#wscroller').height());
+		                //    	$('.myScrollbarV').height($('#wscroller').height());
 		                    };
 	             		var bindScrollBar = function(){$('.myScrollbarV').unbind().bind('click', function(e){
 	             		

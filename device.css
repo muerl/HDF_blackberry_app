@@ -19,9 +19,10 @@
 	z-index:100;
 	width:7px;
 	bottom:7px;
-	top:2px;
+	top:7px;
 	right:1px;
 	pointer-events: auto !important; /* important. Otherwise you can not click on the scroll bar*/
+	border-image:url(UpDown.png) 4 0;
 	background: -webkit-gradient(linear, left top, left bottom, from(#93A1AC), to(#B7C0C7))
 }
 
