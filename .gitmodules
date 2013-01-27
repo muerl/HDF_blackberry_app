@@ -1,0 +1,3 @@
+[submodule "sharedhtml"]
+	path = sharedhtml
+	url = https://github.com/harddatafactory/HDF_shared_public_files
