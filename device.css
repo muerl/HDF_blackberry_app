@@ -23,6 +23,9 @@
 	right:1px;
 	pointer-events: auto !important; /* important. Otherwise you can not click on the scroll bar*/
 	border-image:url(UpDown.png) 4 0;
+	-webkit-border-image:url(UpDown.png) 4 0;
+	-moz-border-image:url(UpDown.png) 4 0;
+	-o-border-image:url(UpDown.png) 4 0;
 	background: -webkit-gradient(linear, left top, left bottom, from(#93A1AC), to(#B7C0C7))
 }
 
