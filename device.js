@@ -173,7 +173,7 @@
 function device_initialize( )
 {
    WebWorks.setup();   // Allows vertical middle to scroll up & down
-   return "../sharedhtml/";
+   return "sharedhtml/";
 }
 
 function device_get_json( url )
