@@ -44,15 +44,13 @@
   <div id="header">
     <div class="toolbar" onclick="hidedetail( );">
      
-     <a id="backbutton" >
+     <a id="backbutton">
       <img border=0 height="29px" width="47px" src='sharedhtml/images/back_button.png'>
     </a>
 
-    <h1 id="pagetitle">Tech: No City Selected</h1>
-    
-    <a id="changecity" onclick="showoptions();">
-      <img height="29px" width="57px" src='sharedhtml/images/optionsbutton.png'>
-    </a>
+    <h1 id="pagetitle"><span></span>
+      <img src="sharedhtml/images/TEC_calendar_white.gif" height="43" />
+    </h1>
     
   </div>
 
@@ -75,12 +73,6 @@
 
    <table id="mytodaylist" class="elist">
    </table>
-   <div id="options" style="">
-     <center>
-       <div id="optiontable">
-       </div>
-     </center>
-   </div>
    <div id="aboutthisapp">
     <table style="background-color: #FFFFFF; width: 100%; height: 100%; color:#000000;">
       <tr>
@@ -89,32 +81,7 @@
       </tr>
       <tr>
         <td>
-          <p><b>About the Developer</b></p>
-
-          <div style="float: right;">
-            <a href="http://harddatafactory.com/Johnny_Monsarrat_contact.html"  class="external-link"target=_blank>
-              <img border="0" src="sharedhtml/images/logos/newlogo_36pt_color.png" width=150>
-            </a>
-          </div>
-          <p>Hard Data Factory draws information from public websites. Using patented technology, we can find events, sales leads, management bios, real estate listings, and more.</p>
-          <br>
-
-          <p>We welcome your feedback! For support or information, 
-            <a href="#" class="email-link" to="johnny@harddatafactory.com" subject="Email from the mobile app" body="" >email us</a>, call
-      <a href="#" class="phone-link">617-510-4477</a>, or see our <a href="http://harddatafactory.com/Johnny_Monsarrat_contact.html"  class="external-link"  target=_blank>website</a>.
-          </p>
-          <br />
-
-          <div style="float: right;">
-            <a href="http://eventsINSIDER.com" class="external-link" target=_blank>
-              <img border="0" src="sharedhtml/images/logos/eventsinsider_logo_100x100.png" width=100>
-            </a>
-          </div>
-          <p>Are you in Boston? See 
-            <a href="http://eventsINSIDER.com" class="external-link" >Events INSIDER</a>, New England's most popular events blog.
-          </p>
-          <br>
-
+          The calendar is provided by Hard Data Factory. Hard Data Factory is based in the Boston Globe headquarters (as a separate organization) and supplies the world's largest calendar of high-tech and business networking events to sponsors in major cities across North America. Its leaders founded and ran Turbine, Inc., the videogames company that makes Lord of the Rings Online and was acquired by Warner Brothers for $160 million in 2010. With two patents in collecting data from public websites, Hard Data Factory also supplies record-breaking lists of sales leads for clients, adds thousands of real followers to client Twitter accounts, and is developing the world's largest arts calendar. See <a href="http://harddatafactory.com" class="external-link">http://harddatafactory.com</a>, <a href="http://eventsinsider.com" class="external-link">http://eventsinsider.com/</a>, and <a href="https://twitter.com/OddBostonEvents" class="external-link">@OddBostonEvents.</a>
         </td>
         <td>&nbsp;</td>
       </tr>
@@ -148,15 +115,16 @@
       </tr>
 
       <tr>
-          <td id="buttons_details">
+        <td id="buttons_details">
           <button id="detail-URL" type="button">Event website</button>
           <button id="detail-Source" type="button">Where we found it</button>
           <button id="email-link" class="email-link">Email event</button>
           <button class='calendar-link'>Add to calendar</button>
+          <button class="aboutButton" onclick="showabout();">About This App</button>        
+      </td>
     </tr> 
     <tr>
-      <td valign=middle style="height: 72px; padding-right: 40px;"><img border="0" border=0 onclick="showabout();" src="sharedhtml/images/logos/your_logo_here.png" width=100 /> 
-        <button class="aboutButton" style="float:right;" onclick="showabout();">About This App</button>        
+      <td valign=middle style="padding: 20px;"><center><img border="0" border=0 onclick="showabout();" src="sharedhtml/images/TEC_logo_color.png" width="150px"; /></center> 
       </td> 
     </tr> 
   </table>
@@ -179,7 +147,7 @@
     Month
   </a>
   <a class="newbutton" style="left: 60px; right: auto;" onclick="showtoday();">Today</a>
-  <a id="sponsorname" class="newbutton" style="left: auto; right: 6px;" onclick="showabout();"></a>
+  <a id="sponsorname" class="newbutton" style="left: auto; right: 6px;" onclick="showabout();">About TEC@FoleyHoag</a>
 </div>
 </div>
 <!-- AddThisEvent -->
