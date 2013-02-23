@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:rim="http://www.blackberry.com/ns/widgets" version="2.0.1.0">
-  <name>Startup Cal</name>
+  <name>TEC Calendar</name>
   <author rim:copyright="Copyright 2011-2012" email="johnny@harddatafactory.com" href="http://harddatafactory.com/">Hard Data Factory</author>
   <feature id="blackberry.invoke" required="true" version="1.0.0.0"/>
   <feature id="blackberry.invoke.CalendarArguments" required="true" version="1.0.0.0"/>
@@ -59,8 +59,7 @@
     <feature id="blackberry.pim.Reminder" required="true" version="1.0.0.0"/>
     <feature id="blackberry.pim.Task" required="true" version="1.0.0.0"/>
   </access>
-  <icon rim:hover="false" src="img/icon_48x48_trans.png"/>
-  <icon rim:hover="true" src="img/icon_48x48_trans_hilited.png"/>
+  <icon rim:hover="false" src="img/foley_hoag_48x48.png"/>
   <content src="index.html"/>
   <rim:connection>
     <id>BIS-B</id>
@@ -69,5 +68,5 @@
     <id>WAP2</id>
     <id>WAP</id>
   </rim:connection>
-  <rim:loadingScreen foregroundImage="img/splash_BR_.png" onRemotePageLoad="true" onLocalPageLoad="true" onFirstLaunch="true"/>
+  <rim:loadingScreen foregroundImage="img/foley_hoag_.png" onRemotePageLoad="true" onLocalPageLoad="true" onFirstLaunch="true"/>
 </widget>
