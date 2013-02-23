@@ -42,3 +42,4 @@ Thumbs.db
 # Intermediary Files and Binary Files #
 bin/
 src/
+copy/
