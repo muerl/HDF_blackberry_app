@@ -1,0 +1,1 @@
+"c:\Program Files\Research In Motion\BlackBerry JDE 7.0.0\bin\JavaLoader.exe" -u load bin\StandardInstall\HardDataFH.cod

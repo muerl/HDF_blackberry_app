@@ -157,7 +157,7 @@
 			$.noop();
 	} catch(e){
 		
-  	  blackberry = {}; blackberry.system = {}; blackberry.system.event = {}; blackberry.system.event.onHardwareKey = $.noop; blackberry.system.hasCapability = function(){return false;};
+  	  blackberry = {}; blackberry.system = {}; blackberry.system.event = {}; blackberry.system.event.onHardwareKey = $.noop; blackberry.system.hasCapability = function(){return true;};
   	}
     function handleBack() {
     	if($("#backbutton").css("display") != "none")
@@ -170,12 +170,18 @@
 })()
 
 // Device-specific code for the Android and iPhone
-function device_initialize( )
+device_initialize = (function()
 {
-   WebWorks.setup();   // Allows vertical middle to scroll up & down
-   return "sharedhtml/";
-}
-
+	var once = false;
+	return function()
+	{
+		if(!once){
+			once = true;
+			WebWorks.setup();   // Allows vertical middle to scroll up & down
+		}
+		return "sharedhtml/";
+	}
+}())
 function device_get_json( url )
 {    
     $.getScript( url )
